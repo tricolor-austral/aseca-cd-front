@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import GetOrderButton from './buttons/ordersId';
+import DeliverOrder from './input/deliver-order';
 import './App.css';
 
+function HomePage() {
+    return (
+        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+            <Typography variant="h3" gutterBottom>
+                Cross Docking UI
+            </Typography>
+            <DeliverOrder endpoint="order/deliver" />
+            <GetOrderButton endpoint="order" />
+        </div>
+    );
+}
+
+function SubOrdersPage() {
+    return (
+        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+            <Typography variant="h3" gutterBottom>
+                Sub Orders
+            </Typography>
+            <DeliverOrder endpoint="sub-order/deliver" />
+            <GetOrderButton endpoint="sub-order" />
+        </div>
+    );
+}
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/sub-orders" element={<SubOrdersPage />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
