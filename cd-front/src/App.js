@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import GetOrderButton from './buttons/ordersId';
 import DeliverOrder from './input/deliver-order';
-import './App.css';
 
 function HomePage() {
     return (
